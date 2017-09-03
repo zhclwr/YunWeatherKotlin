@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.victor.yunweatherkotlin.R
-import com.victor.yunweatherkotlin.db.City
+import com.victor.yunweatherkotlin.db.CityDB
 import kotlinx.android.synthetic.main.activity_load.*
 import org.jetbrains.anko.defaultSharedPreferences
 import org.jetbrains.anko.doAsync
@@ -14,7 +14,7 @@ import java.io.InputStreamReader
 
 
 class LoadActivity : BaseActivity() {
-    private var list = ArrayList<City>()
+    private var list = ArrayList<CityDB>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_load)
@@ -37,14 +37,14 @@ class LoadActivity : BaseActivity() {
             var progress = 0
             for (s in temp){
                 var c = s.split("\t".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-                City(c[0], c[2], c[9], c[7]).save()
+                CityDB(c[0], c[2], c[9], c[7]).save()
                 num++
                 if (num in 1..3181 step 31){
                     uiThread { progressBar.progress = progress++ }
                 }
             }
             val edit = defaultSharedPreferences.edit()
-            edit.putBoolean("data",true).apply()
+            edit.putBoolean("data",false).apply()
             uiThread {
                 tv_load.text = "数据库升级完成"
                 bt_load.visibility = View.VISIBLE

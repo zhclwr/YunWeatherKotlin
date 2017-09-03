@@ -48,9 +48,11 @@
 
 
     <LinearLayout
+        android:id="@+id/edit_body"
         android:layout_below="@id/rl_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#fff" />
+        android:background="#fff"
+        android:orientation="vertical" />
 
 </RelativeLayout>

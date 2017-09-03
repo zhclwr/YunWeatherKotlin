@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.victor.yunweatherkotlin.interfaces.OnItemClickListener
 import com.victor.yunweatherkotlin.R
-import com.victor.yunweatherkotlin.db.City
+import com.victor.yunweatherkotlin.db.CityDB
 import org.jetbrains.anko.find
 
 
-class MAdapter(val list:ArrayList<City>) : RecyclerView.Adapter<MAdapter.ViewHolder>() {
+class MAdapter(val list:ArrayList<CityDB>) : RecyclerView.Adapter<MAdapter.ViewHolder>() {
 
     var listener : OnItemClickListener? = null
 

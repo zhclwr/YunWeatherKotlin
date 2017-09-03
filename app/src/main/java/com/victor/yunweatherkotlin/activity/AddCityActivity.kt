@@ -9,7 +9,7 @@ import android.util.Log
 import android.view.View
 import com.victor.yunweatherkotlin.R
 import com.victor.yunweatherkotlin.adapter.MAdapter
-import com.victor.yunweatherkotlin.db.City
+import com.victor.yunweatherkotlin.db.CityDB
 import com.victor.yunweatherkotlin.interfaces.OnItemClickListener
 import kotlinx.android.synthetic.main.activity_add_city.*
 import org.jetbrains.anko.defaultSharedPreferences
@@ -18,7 +18,7 @@ import org.litepal.crud.DataSupport
 
 class AddCityActivity : BaseActivity() {
 
-    var list = ArrayList<City>()
+    var list = ArrayList<CityDB>()
     var adapter: MAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,12 +54,15 @@ class AddCityActivity : BaseActivity() {
         adapter = MAdapter(list)
         recycler_view.adapter = adapter
         adapter?.setOnClickListener(object : OnItemClickListener {
-            override fun onItemClick(v: View, positon: Int) {
-                val city = list[positon]
+            override fun onItemClick(v: View, position: Int) {
+                val city = list[position]
                 val cityCode = city.cityCode
                 val edit = defaultSharedPreferences.edit()
                 edit.putString("cityCode", cityCode).apply()
-                startActivity(Intent(applicationContext, WeatherActivity::class.java))
+                val i =Intent(applicationContext, WeatherActivity::class.java)
+                i.putExtra("update",true)
+                startActivity(i)
+                finish()
             }
         })
     }
@@ -76,7 +79,7 @@ class AddCityActivity : BaseActivity() {
             list.clear()
         } else {
             //不为空去查询数据库
-            val temp: List<City> = DataSupport.where("county like ?", "%$input%").find(City::class.java)
+            val temp: List<CityDB> = DataSupport.where("county like ?", "%$input%").find(CityDB::class.java)
             list.clear()
             list.addAll(temp)
             Log.i("haha", list.size.toString())

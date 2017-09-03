@@ -15,6 +15,8 @@ class EditCitysActivity : BaseActivity() {
 
     private fun setListener() {
         iv_back.setOnClickListener { finish() }
-        iv_add.setOnClickListener { startActivity(Intent(this, AddCityActivity::class.java)) }
+        iv_add.setOnClickListener {
+            startActivity(Intent(this, AddCityActivity::class.java))
+        }
     }
 }
