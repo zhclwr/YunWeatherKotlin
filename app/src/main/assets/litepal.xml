@@ -3,12 +3,11 @@
 
     <dbname value="demo" />
 
-
-    <version value="1" />
-
+    <version value="2" />
 
     <list>
         <mapping class="com.victor.yunweatherkotlin.db.CityDB"/>
+        <mapping class="com.victor.yunweatherkotlin.db.County"/>
     </list>
 
 

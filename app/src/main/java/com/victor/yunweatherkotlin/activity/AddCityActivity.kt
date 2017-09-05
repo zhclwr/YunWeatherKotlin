@@ -14,12 +14,13 @@ import com.victor.yunweatherkotlin.interfaces.OnItemClickListener
 import kotlinx.android.synthetic.main.activity_add_city.*
 import org.jetbrains.anko.defaultSharedPreferences
 import org.litepal.crud.DataSupport
+import org.litepal.tablemanager.Connector
 
 
 class AddCityActivity : BaseActivity() {
 
     var list = ArrayList<CityDB>()
-    var adapter: MAdapter? = null
+    private lateinit var adapter: MAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,7 @@ class AddCityActivity : BaseActivity() {
         //给recycler view添加适配器
         setAdapter()
         //设置文本变化监听
+        Connector.getDatabase()
         setTextChangerListener()
 
     }
@@ -58,7 +60,9 @@ class AddCityActivity : BaseActivity() {
                 val city = list[position]
                 val cityCode = city.cityCode
                 val edit = defaultSharedPreferences.edit()
-                edit.putString("cityCode", cityCode).apply()
+                edit.putString("cityCode", cityCode)
+                edit.putString("cityName",city.county)
+                edit.apply()
                 val i =Intent(applicationContext, WeatherActivity::class.java)
                 i.putExtra("update",true)
                 startActivity(i)

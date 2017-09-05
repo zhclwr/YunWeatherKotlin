@@ -1,5 +1,6 @@
 package com.victor.yunweatherkotlin.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -11,6 +12,8 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.victor.yunweatherkotlin.R
+import com.victor.yunweatherkotlin.db.County
+import com.victor.yunweatherkotlin.gson.HeWeather
 import com.victor.yunweatherkotlin.gson.Weather
 import kotlinx.android.synthetic.main.activity_weather.*
 import kotlinx.android.synthetic.main.aqi.*
@@ -21,6 +24,7 @@ import kotlinx.android.synthetic.main.title.*
 import org.jetbrains.anko.defaultSharedPreferences
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
+import org.litepal.crud.DataSupport
 import java.net.URL
 
 
@@ -36,10 +40,11 @@ import java.net.URL
 
 class WeatherActivity : BaseActivity() {
 
-    val key = "ac4cceaa37be4d7099f04b2b0b456041"
-    var cityCode = ""
-    var weatherStr = ""
-    var sp: SharedPreferences? = null
+    private val key = "ac4cceaa37be4d7099f04b2b0b456041"
+    private lateinit var cityCode: String
+    private lateinit var weatherStr: String
+    private lateinit var sp: SharedPreferences
+    private var firstRun = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,20 +57,18 @@ class WeatherActivity : BaseActivity() {
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK&&event?.repeatCount==0){
-            if (drawer_layout.isDrawerOpen(GravityCompat.START)){
+        if (keyCode == KeyEvent.KEYCODE_BACK && event?.repeatCount == 0) {
+            if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
                 drawer_layout.closeDrawer(GravityCompat.START)
                 return true
             }
-
         }
         return super.onKeyDown(keyCode, event)
-
     }
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        if (intent?.getBooleanExtra("update",false)!!){
+        if (intent?.getBooleanExtra("update", false)!!) {
             swipe_refresh.isRefreshing = true
             requestWeather()
         }
@@ -83,36 +86,35 @@ class WeatherActivity : BaseActivity() {
     /**欢迎页展示和显示天气*/
     private fun judgeIf() {
         //判断china-city-list是否有写到数据库，没有就欢迎启动导入数据库
-        if (sp!!.getBoolean("data", true)) {
+        if (sp.getBoolean("data", true)) {
             startActivity(Intent(this, LoadActivity::class.java))
             finish()
         }
         //判断是否有缓存的天气
-        if ("" != sp!!.getString("weatherStr", "")) {
+        if ("" != sp.getString("weatherStr", "")) {
             showWeather()
-        } else{
+        } else {
             can_gone.visibility = View.GONE
             title_city.text = "暂无天气"
             image_add.visibility = View.VISIBLE
         }
-        cityCode = sp!!.getString("cityCode","")
-        if (""!=cityCode){
+        cityCode = sp.getString("cityCode", "")
+        if ("" != cityCode) {
             requestWeather()
         }
 
     }
 
     private fun showWeather() {
-        weatherStr = sp!!.getString("weatherStr","")
-        if (weatherStr == "") {
-            return
-        } else {
+        weatherStr = sp.getString("weatherStr", "")
+        if (weatherStr == "") return
+        else {
             can_gone.visibility = View.VISIBLE
             image_add.visibility = View.GONE
-            var gson = Gson()
-            var weather: Weather = gson.fromJson(weatherStr, Weather::class.java)
-            var heWeather = weather.HeWeather5[0]
-
+            val gson = Gson()
+            val weather: Weather = gson.fromJson(weatherStr, Weather::class.java)
+            val heWeather = weather.HeWeather5[0]
+            saveCounty(heWeather)
             title_city.text = heWeather.basic.city
             title_update_time.text = "更新时间" + heWeather.basic.update.loc.split(" ")[1]
             degree_text.text = heWeather.now.tmp + "℃"
@@ -139,6 +141,14 @@ class WeatherActivity : BaseActivity() {
         swipe_refresh.isRefreshing = false
     }
 
+    private fun saveCounty(weather: HeWeather) {
+        val county = County(weather.basic.city, weather.now.cond.txt)
+        val counties = DataSupport.findAll(County::class.java)
+        if (county in counties) return else county.save()
+
+
+    }
+
     private fun setLinstener() {
         nav_button.setOnClickListener { drawer_layout.openDrawer(GravityCompat.START) }
         nav_view.setNavigationItemSelectedListener { item ->
@@ -154,13 +164,13 @@ class WeatherActivity : BaseActivity() {
             bingPic()
         }
         image_add.setOnClickListener {
-            startActivity(Intent(applicationContext,AddCityActivity::class.java))
+            startActivity(Intent(applicationContext, AddCityActivity::class.java))
         }
     }
 
     private fun requestWeather() {
-        cityCode = sp!!.getString("cityCode","")
-        if(""!= cityCode){
+        cityCode = sp.getString("cityCode", "")
+        if ("" != cityCode) {
             doAsync {
                 var url = "https://free-api.heweather.com/v5/weather?city=$cityCode&key=$key"
                 var resultStr = URL(url).readText()
@@ -168,7 +178,7 @@ class WeatherActivity : BaseActivity() {
                         .edit()
                         .putString("weatherStr", resultStr)
                         .apply()
-                uiThread{ showWeather() }
+                uiThread { showWeather() }
             }
         }
     }
