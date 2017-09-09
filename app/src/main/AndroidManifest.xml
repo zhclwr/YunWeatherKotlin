@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.victor.yunweatherkotlin">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="org.litepal.LitePalApplication"
@@ -12,18 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.WeatherActivity"
+        <activity android:name=".activity.MainActivity">
+        </activity>
+        <activity
+            android:name=".activity.WeatherActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.EditCitysActivity"></activity>
+        <activity android:name=".activity.EditCitysActivity" />
         <activity android:name=".activity.AddCityActivity" />
-        <activity android:name=".activity.LoadActivity"
-            android:launchMode="singleTask"></activity>
+        <activity
+            android:name=".activity.LoadActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.AboutActivity"></activity>
     </application>
 
 </manifest>

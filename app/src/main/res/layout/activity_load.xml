@@ -32,7 +32,7 @@
             android:text="确定"
             android:layout_gravity="center"
             android:layout_marginTop="260dp"
-            android:background="#0000CD"
+            android:background="#483D8B"
             android:textColor="#fff"
             android:visibility="gone"
             android:layout_width="wrap_content"

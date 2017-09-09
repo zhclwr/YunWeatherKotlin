@@ -9,17 +9,21 @@ import kotlinx.android.synthetic.main.activity_load.*
 import org.jetbrains.anko.defaultSharedPreferences
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
-import java.io.InputStreamReader
+import java.net.URL
 
-
+/**
+ *   china-city-list:http://116.196.93.90/china-city-list.txt
+ *
+ * */
 
 class LoadActivity : BaseActivity() {
     private var list = ArrayList<CityDB>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_load)
-        load()
+        loadFromNet()
         setListener()
+
     }
 
     private fun setListener() {
@@ -28,11 +32,12 @@ class LoadActivity : BaseActivity() {
             finish()
         }
     }
-    /**导入数据库*/
-    private fun load() {
+
+    /**从网络导入查询数据库*/
+    private fun loadFromNet(){
         doAsync {
-            val stream = InputStreamReader(assets.open("china-city-list.txt"))
-            val temp = stream.readLines()
+            val citys :String = URL("http://116.196.93.90/china-city-list.txt").readText()
+            val temp = citys.split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
             var num = 0
             var progress = 0
             for (s in temp){
@@ -50,6 +55,5 @@ class LoadActivity : BaseActivity() {
                 bt_load.visibility = View.VISIBLE
             }
         }
-
     }
 }

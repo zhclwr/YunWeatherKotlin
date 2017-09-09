@@ -13,6 +13,4 @@ class QuickAdapter(data:List<County>) : BaseItemDraggableAdapter<County, BaseVie
         helper?.setText(R.id.tv_city,item?.name)
         helper?.setText(R.id.tv_wea,item?.weaInfo)
     }
-
-
 }
