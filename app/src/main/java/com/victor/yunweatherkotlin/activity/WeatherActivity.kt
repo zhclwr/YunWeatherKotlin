@@ -1,12 +1,10 @@
 package com.victor.yunweatherkotlin.activity
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.view.GravityCompat
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -59,8 +57,8 @@ class WeatherActivity : BaseActivity() {
         setLinstener()
         judgeIf()
         requestWeather()
-//        bingPic()
-        bgPic()
+        bingPic()
+//        bgPic()
     }
 
     /**

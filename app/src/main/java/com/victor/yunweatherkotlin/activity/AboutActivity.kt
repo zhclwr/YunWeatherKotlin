@@ -2,10 +2,8 @@ package com.victor.yunweatherkotlin.activity
 
 import android.os.Bundle
 import com.airbnb.lottie.LottieAnimationView
-import com.airbnb.lottie.LottieComposition
 import com.victor.yunweatherkotlin.R
 import kotlinx.android.synthetic.main.activity_about.*
-import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.*
 import org.json.JSONObject
 import java.net.URL
