@@ -57,8 +57,8 @@ class WeatherActivity : BaseActivity() {
         setLinstener()
         judgeIf()
         requestWeather()
-        bingPic()
-//        bgPic()
+//        bingPic()
+        bgPic()
     }
 
     /**
@@ -88,7 +88,7 @@ class WeatherActivity : BaseActivity() {
 
     /**bg背景图*/
     private fun bgPic(){
-        Glide.with(applicationContext).load("http://116.196.93.90/png/bg.png").into(iv_bing)
+        Glide.with(applicationContext).load("http://116.196.93.90/png/bg1.png").into(iv_bing)
     }
 
     /**Bing背景图*/
