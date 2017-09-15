@@ -12,7 +12,7 @@
         android:layout_marginTop="15dp"
         android:text="生活指数"
         android:textColor="#DCDCDC"
-        android:textSize="15sp" />
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -57,6 +57,16 @@
                             <include layout="@layout/aqi" />
 
                             <include layout="@layout/suggestion" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:textSize="10sp"
+                                android:text="和风天气 | 中国天气网"
+                                android:textColor="#DCDCDC"
+                                android:gravity="center"/>
                         </LinearLayout>
                     </ScrollView>
 
