@@ -47,7 +47,7 @@
                         <LinearLayout
                             android:id="@+id/can_gone"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
 
                             <include layout="@layout/now" />
@@ -64,7 +64,7 @@
                                 android:layout_marginTop="20dp"
                                 android:layout_marginBottom="10dp"
                                 android:textSize="10sp"
-                                android:text="和风天气 | 中国天气网"
+                                android:text="@string/china_weather"
                                 android:textColor="#DCDCDC"
                                 android:gravity="center"/>
                         </LinearLayout>

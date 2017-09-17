@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        android:text="生活指数"
+        android:text="@string/index_of_living"
         android:textColor="#DCDCDC"
         android:textSize="20sp" />
 
@@ -43,7 +43,6 @@
                 android:id="@+id/comfort_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="text"
                 android:textColor="#DCDCDC" />
 
         </LinearLayout>
@@ -71,7 +70,6 @@
                 android:id="@+id/cw_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title"
                 android:textColor="#fff"
                 android:textSize="20sp" />
 
@@ -79,7 +77,6 @@
                 android:id="@+id/cw_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="text"
                 android:textColor="#DCDCDC" />
 
         </LinearLayout>
@@ -107,7 +104,6 @@
                 android:id="@+id/drsg_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title"
                 android:textColor="#fff"
                 android:textSize="20sp" />
 
@@ -115,7 +111,6 @@
                 android:id="@+id/drsg_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="text"
                 android:textColor="#DCDCDC" />
 
         </LinearLayout>
@@ -143,7 +138,6 @@
                 android:id="@+id/flu_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title"
                 android:textColor="#fff"
                 android:textSize="20sp" />
 
@@ -151,7 +145,6 @@
                 android:id="@+id/flu_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="text"
                 android:textColor="#DCDCDC" />
 
         </LinearLayout>
@@ -180,7 +173,6 @@
                 android:id="@+id/sport_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title"
                 android:textColor="#fff"
                 android:textSize="20sp" />
 
@@ -188,7 +180,6 @@
                 android:id="@+id/sport_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="text"
                 android:textColor="#DCDCDC" />
 
         </LinearLayout>
@@ -216,7 +207,6 @@
                 android:id="@+id/trav_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title"
                 android:textColor="#fff"
                 android:textSize="20sp" />
 
@@ -224,7 +214,6 @@
                 android:id="@+id/trav_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="text"
                 android:textColor="#DCDCDC" />
 
         </LinearLayout>
@@ -252,7 +241,6 @@
                 android:id="@+id/uv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title"
                 android:textColor="#fff"
                 android:textSize="20sp" />
 
@@ -260,7 +248,6 @@
                 android:id="@+id/uv_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="text"
                 android:textColor="#DCDCDC" />
 
         </LinearLayout>

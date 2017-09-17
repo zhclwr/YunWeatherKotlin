@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="关于"
+            android:text="@string/about"
             android:textColor="#fff"
             android:textSize="20sp" />
 
@@ -54,14 +54,14 @@
             android:layout_marginTop="150dp"
             android:layout_centerHorizontal="true"
             android:textColor="#000000"
-            android:text="YunWeather"
+            android:text="@string/app_name_en"
             android:textSize="20sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_yun"
             android:layout_centerHorizontal="true"
-            android:text="version:1.2beta"/>
+            android:text="@string/version"/>
 
     </RelativeLayout>
 

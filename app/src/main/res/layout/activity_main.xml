@@ -30,7 +30,6 @@
             android:id="@+id/bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="下一个"
             android:layout_below="@id/lottie_view"
             android:layout_centerHorizontal="true"/>
     </RelativeLayout>

@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">云天气</string>
+    <string name="about">关于</string>
+    <string name="app_name_en">YunWeather</string>
+    <string name="version">version:1.2beta</string>
+    <string name="add_city">添加城市</string>
+    <string name="input_city">输入城市</string>
+    <string name="edit_city">城市管理</string>
+    <string name="loading">正在升级数据库~</string>
+    <string name="confirm">确定</string>
+    <string name="china_weather">和风天气 | 中国天气网</string>
+    <string name="aqi">空气质量</string>
+    <string name="aqi_num">AQI指数</string>
+    <string name="pm2_5">PM2.5指数</string>
+    <string name="forecast">预报</string>
+    <string name="email">zhclwr@163.com</string>
+    <string name="author">Victor</string>
+    <string name="index_of_living">生活指数</string>
 
 </resources>

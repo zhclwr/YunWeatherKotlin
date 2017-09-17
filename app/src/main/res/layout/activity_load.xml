@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="210dp"
             android:gravity="center"
-            android:text="正在升级数据库~"
+            android:text="@string/loading"
             android:textColor="#fff"
             android:textSize="25sp" />
         <ProgressBar
@@ -29,7 +29,7 @@
             android:max="100"/>
         <Button
             android:id="@+id/bt_load"
-            android:text="确定"
+            android:text="@string/confirm"
             android:layout_gravity="center"
             android:layout_marginTop="260dp"
             android:background="#483D8B"

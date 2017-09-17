@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="城市管理"
+            android:text="@string/edit_city"
             android:textSize="20sp"
             android:textColor="#fff" />
 
