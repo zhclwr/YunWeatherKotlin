@@ -57,8 +57,8 @@ class WeatherActivity : BaseActivity() {
         setLinstener()
         judgeIf()
         requestWeather()
-//        bingPic()
-        bgPic()
+        bingPic()
+//        bgPic()
     }
 
     /**
@@ -212,8 +212,8 @@ class WeatherActivity : BaseActivity() {
         }
         swipe_refresh.setOnRefreshListener {
             requestWeather()
-//            bingPic()
-            bgPic()
+            bingPic()
+//            bgPic()
         }
         image_add.setOnClickListener {
             startActivity(Intent(applicationContext, AddCityActivity::class.java))
