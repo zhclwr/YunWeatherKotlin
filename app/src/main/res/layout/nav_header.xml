@@ -21,20 +21,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:text="@string/email"
+            android:text="@string/version"
             android:textColor="#FFF"
             android:textSize="14sp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginLeft="13dp"
+            android:layout_marginBottom="8sp"/>
 
         <TextView
             android:id="@+id/mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/username"
-            android:text="@string/author"
+            android:text="@string/name"
             android:textColor="#FFF"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:layout_marginLeft="8dp"
             />
     </RelativeLayout>

@@ -1,11 +1,16 @@
 package com.victor.yunweatherkotlin.activity
 
 import android.os.Bundle
+import android.util.Log
 import com.airbnb.lottie.LottieAnimationView
 import com.victor.yunweatherkotlin.R
 import kotlinx.android.synthetic.main.activity_about.*
 import org.jetbrains.anko.*
 import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStream
+import java.io.InputStreamReader
 import java.net.URL
 
 /**
@@ -28,15 +33,25 @@ class AboutActivity : BaseActivity() {
         iv_back_about.setOnClickListener { finish() }
         tv_yun.setOnClickListener {
             if (judge) {
-                longToast("   恭喜你发现新大陆！" +
-                        "\n流量网络请勿多次点击")
+                longToast("恭喜你发现新大陆！")
                 judge = false
             }
+            var jsonString: String
+            var jsonIn : InputStream
             if (i < 50) {
                 i++
                 doAsync {
-                    var jsonString = URL("http://116.196.93.90/Json/$i.json").readText()
-                    var json = JSONObject(jsonString)
+                    jsonIn = assets.open("$i.json")
+                    val list = jsonIn.reader().readLines()
+                    Log.i("hahaha",list.size.toString())
+                    val sb = StringBuilder()
+                    for (s in list){
+                        sb.append(s)
+                    }
+                    jsonString = sb.toString()
+                    print(jsonString)
+//                    jsonString = URL("http://116.196.93.90/Json/$i.json").readText()
+                    val json = JSONObject(jsonString)
                     uiThread {
                         lottie.setAnimation(json)
                         lottie.progress = 0f
@@ -47,5 +62,7 @@ class AboutActivity : BaseActivity() {
 
         }
     }
+
+
 
 }

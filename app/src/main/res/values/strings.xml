@@ -2,7 +2,7 @@
     <string name="app_name">云天气</string>
     <string name="about">关于</string>
     <string name="app_name_en">YunWeather</string>
-    <string name="version">version:1.2beta</string>
+    <string name="version">1.2beta</string>
     <string name="add_city">添加城市</string>
     <string name="input_city">输入城市</string>
     <string name="edit_city">城市管理</string>
@@ -16,5 +16,7 @@
     <string name="email">zhclwr@163.com</string>
     <string name="author">Victor</string>
     <string name="index_of_living">生活指数</string>
+    <string name="name">云天气</string>
+
 
 </resources>
