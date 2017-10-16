@@ -1,7 +1,10 @@
 package com.victor.yunweatherkotlin.activity
 
+import android.app.Activity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.Menu
 import com.airbnb.lottie.LottieAnimationView
 import com.victor.yunweatherkotlin.R
 import kotlinx.android.synthetic.main.activity_about.*
@@ -36,6 +39,7 @@ class AboutActivity : BaseActivity() {
                 longToast("恭喜你发现新大陆！")
                 judge = false
             }
+
             var jsonString: String
             var jsonIn : InputStream
             if (i < 50) {
@@ -63,6 +67,8 @@ class AboutActivity : BaseActivity() {
         }
     }
 
-
-
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.nav_menu,menu)
+        return true
+    }
 }

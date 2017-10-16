@@ -35,9 +35,8 @@ class MainActivity : BaseActivity() {
                 tv.text = i.toString()
             }
         }
-
-
     }
+
 }
 
 
