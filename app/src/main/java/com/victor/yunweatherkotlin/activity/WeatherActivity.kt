@@ -21,10 +21,7 @@ import kotlinx.android.synthetic.main.forecast.*
 import kotlinx.android.synthetic.main.now.*
 import kotlinx.android.synthetic.main.suggestion.*
 import kotlinx.android.synthetic.main.title.*
-import org.jetbrains.anko.defaultSharedPreferences
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.longToast
-import org.jetbrains.anko.uiThread
+import org.jetbrains.anko.*
 import org.litepal.crud.DataSupport
 import java.net.URL
 
@@ -161,10 +158,10 @@ class WeatherActivity : BaseActivity() {
             forecast_layout.removeAllViews()
             for ((date, tmp, cond) in heWeather.daily_forecast) {
                 val view = LayoutInflater.from(applicationContext).inflate(R.layout.forecast_item, forecast_layout, false)
-                val dateText = view.findViewById(R.id.date_text) as TextView
-                val infoText = view.findViewById(R.id.info_text) as TextView
-                val maxText = view.findViewById(R.id.max_text) as TextView
-                val minText = view.findViewById(R.id.min_text) as TextView
+                val dateText = view.find<TextView>(R.id.date_text)
+                val infoText = view.find<TextView>(R.id.info_text) as TextView
+                val maxText = view.find<TextView>(R.id.max_text) as TextView
+                val minText = view.find<TextView>(R.id.min_text) as TextView
                 dateText.text = date
                 infoText.text = cond.txt_d
                 maxText.text = tmp.max

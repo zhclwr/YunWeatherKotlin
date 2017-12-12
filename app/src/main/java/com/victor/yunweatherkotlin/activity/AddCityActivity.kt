@@ -8,6 +8,9 @@ import android.text.TextWatcher
 import android.util.Log
 import com.victor.yunweatherkotlin.R
 import com.victor.yunweatherkotlin.adapter.EditTextAdapter
+import com.victor.yunweatherkotlin.app.MyApplication
+import com.victor.yunweatherkotlin.bean.City
+import com.victor.yunweatherkotlin.dao.CityDao
 import com.victor.yunweatherkotlin.db.CityDB
 import kotlinx.android.synthetic.main.activity_add_city.*
 import org.jetbrains.anko.defaultSharedPreferences
@@ -17,7 +20,7 @@ import org.litepal.crud.DataSupport
 
 class AddCityActivity : BaseActivity() {
 
-    var list = ArrayList<CityDB>()
+    var list = ArrayList<City>()
     private lateinit var mAdapter:EditTextAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,8 +81,11 @@ class AddCityActivity : BaseActivity() {
         if (input.isEmpty()) {
             list.clear()
         } else {
+            val dao = MyApplication.getInstances().daoSession.cityDao
             //不为空去查询数据库
-            val temp: List<CityDB> = DataSupport.where("county like ?", "%$input%").find(CityDB::class.java)
+            val temp: List<City> = dao.queryBuilder().where(CityDao.Properties.County.like("%$input%")).list()
+
+//                    DataSupport.where("county like ?", "%$input%").find(CityDB::class.java)
             list.clear()
             list.addAll(temp)
             Log.i("haha", list.size.toString())
